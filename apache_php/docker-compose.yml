@@ -1,0 +1,26 @@
+web:
+    image: pcfreak30/bedrock:apache-php
+    environment:
+        DB_NAME: wordpress
+        DB_USER: root
+        DB_PASSWORD: pass
+        WP_HOME: http://localhost
+        WP_SITEURL: http://localhost
+    ports:
+        - 80:80
+    links:
+        - mysql:mysql
+    volumes:
+        - web/:/var/www
+
+mysql:
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: pass
+        MYSQL_DATABASE: wordpress
+phpmyadmin:
+  image: nazarpc/phpmyadmin
+  links:
+    - mysql:mysql
+  ports:
+    - 8081:80
