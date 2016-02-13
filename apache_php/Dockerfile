@@ -18,7 +18,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 WORKDIR /usr/src/wordpress
 
 # Clones bedrock git and checks out latest tag so this gives us /usr/src/wordpress
-RUN git clone https://github.com/pcfreak30/bedrock -b dotenv-required-fix /usr/src/wordpress \
+RUN git clone https://github.com/roots/bedrock -b 1.5.3 /usr/src/wordpress \
     && git fetch -q --tags \
     # Don't use latest tag until https://github.com/roots/bedrock/pull/193 is merged and new
     # release is made
